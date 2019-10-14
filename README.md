@@ -41,3 +41,13 @@ Usage
 ---
 
 `npm start`
+
+<!-- Look over what the calculator currently does and orient myself with the code- methods, css, etc. -->
+<!-- Try things, using breakpoints on the division conditional in operate.js, looking at the data, and trying them out -->
+
+<!-- added delete button, removed class of wide from 0, added classname or "" to delete button in Button.js, added class red to Button.css -->
+
+<!-- delete function works, can change to delete numbers from total, but just alerts right now and doesn't change answer -->
+
+<!-- REVIEW commented out section that was preventing from typing in numbers with 0's in calculate.js -->
+

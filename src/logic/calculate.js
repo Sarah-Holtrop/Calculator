@@ -13,18 +13,43 @@ import isNumber from "./isNumber";
  *   operation:String  +, -, etc.
  */
 export default function calculate(obj, buttonName) {
+  // debugger
   if (buttonName === "AC") {
     return {
       total: null,
       next: null,
       operation: null,
+      history: {
+        totalHistory: null, //this.obj.total?
+        nextHistory: null,
+        operationHistory: null
+      }
     };
+  }
+
+  if (buttonName === "Del") {
+    if (!obj.next) {
+      alert("Cannot delete numbers from answer, clear display first")
+      return { total: obj.total }
+    }
+    let nextArr = obj.next.split("");
+    nextArr.pop();
+    let deleted = nextArr.join("");
+    return { next: deleted }
+    // }
   }
 
   if (isNumber(buttonName)) {
     if (buttonName === "0" && obj.next === "0") {
       return {};
     }
+    // REVIEW prevents typing number with 0's in it, might be unnecessary?
+    // if (buttonName === "0") {
+    //   debugger
+    //   return {
+    //     next: null
+    //   }
+    // }
     // If there is an operation, update next
     if (obj.operation) {
       if (obj.next) {
@@ -55,6 +80,11 @@ export default function calculate(obj, buttonName) {
           .toString(),
         next: null,
         operation: null,
+        history: {
+          totalHistory: this.total,
+          nextHistory: null,
+          operationHistory: null
+        }
       };
     }
     if (obj.next) {
@@ -66,6 +96,9 @@ export default function calculate(obj, buttonName) {
     }
     return {};
   }
+
+
+
 
   if (buttonName === ".") {
     if (obj.next) {
@@ -84,6 +117,11 @@ export default function calculate(obj, buttonName) {
         total: operate(obj.total, obj.next, obj.operation),
         next: null,
         operation: null,
+        history: {
+          totalHistory: obj.total,
+          nextHistory: obj.next,
+          operationHistory: obj.operation
+        }
       };
     } else {
       // '=' with no operation, nothing to do
@@ -109,12 +147,18 @@ export default function calculate(obj, buttonName) {
   //   return {};
   // }
 
+  // REVIEW put something in about delete here
   // User pressed an operation button and there is an existing operation
   if (obj.operation) {
     return {
       total: operate(obj.total, obj.next, obj.operation),
       next: null,
       operation: buttonName,
+      history: {
+        totalHistory: obj.total,
+        nextHistory: null,
+        operationHistory: null
+      }
     };
   }
 
@@ -124,7 +168,7 @@ export default function calculate(obj, buttonName) {
   if (!obj.next) {
     return { operation: buttonName };
   }
-
+  // REVIEW maybe something about delete in here
   // save the operation and shift 'next' into 'total'
   return {
     total: obj.next,

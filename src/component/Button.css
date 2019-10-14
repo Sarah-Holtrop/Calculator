@@ -3,6 +3,19 @@
   width: 25%;
   flex: 1 0 auto;
 }
+.component-button button:hover {
+  /* display: inline;
+  flex: 1 0 auto; */
+  background-color: #e0e0e0;
+  color: #3b3b3b;
+  border: 0;
+  font-size: 1.5rem;
+  margin: 0 1px 0 0;
+  flex: 1 0 auto;
+  padding: 0;
+  background-size: initial;
+  /* border: 1px; */
+}
 
 .component-button.wide {
   width: 50%;
@@ -23,5 +36,11 @@
 
 .component-button.orange button {
   background-color: #f5923e;
+  color: white;
+}
+
+/* added class red */
+.component-button.red button{
+  background-color: #f04646;
   color: white;
 }

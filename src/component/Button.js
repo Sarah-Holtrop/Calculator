@@ -7,6 +7,7 @@ export default class Button extends React.Component {
     name: PropTypes.string,
     orange: PropTypes.bool,
     wide: PropTypes.bool,
+    red: PropTypes.bool,
     clickHandler: PropTypes.func,
   };
 
@@ -14,11 +15,13 @@ export default class Button extends React.Component {
     this.props.clickHandler(this.props.name);
   };
 
+  // added this.props.red
   render() {
     const className = [
       "component-button",
       this.props.orange ? "orange" : "",
       this.props.wide ? "wide" : "",
+      this.props.red ? "red" : "",
     ];
 
     return (
